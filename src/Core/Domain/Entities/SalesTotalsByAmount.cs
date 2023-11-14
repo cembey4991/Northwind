@@ -1,0 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Domain.Entities
+{
+     public partial class SalesTotalsByAmount
+    {
+        public decimal? SaleAmount { get; set; }
+        public int OrderId { get; set; }
+        public string CompanyName { get; set; }
+        public DateTime? ShippedDate { get; set; }
+    }
+}

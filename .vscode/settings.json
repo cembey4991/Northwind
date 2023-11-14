@@ -1,3 +1,3 @@
 {
-    "dotnet.defaultSolution": "src/Core/Application/Application.sln"
+    "dotnet.defaultSolution": "src/Presentation/NorthwindAPI/NorthwindAPI.sln"
 }
