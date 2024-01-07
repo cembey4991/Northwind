@@ -1,7 +1,10 @@
 using System.Reflection;
 using Application.Abstractions.Services;
+using Application.Features.Queries.GetAllProduct;
 using Application.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using NetCore.AutoRegisterDi;
 using Persistence.Context;
 using Persistence.Repositories;
@@ -32,8 +35,11 @@ builder.Services.RegisterAssemblyPublicNonGenericClasses(assembliesToScan)
 .Where(c=>c.Name.EndsWith("Service")).AsPublicImplementedInterfaces();
 builder.Services.RegisterAssemblyPublicNonGenericClasses()
 .Where(c=>c.Name.EndsWith("Repository")).AsPublicImplementedInterfaces();
+builder.Services.RegisterAssemblyPublicNonGenericClasses(assembliesToScan)
+    .Where(c => c.Name == "Handler");
 
-
+//builder.Services.AddTransient<GetAllProductQueryHandler>();
+builder.Services.AddMediatR(typeof(GetAllProductQueryRequest), typeof(GetAllProductQueryResponse));
 
 
 var app = builder.Build();

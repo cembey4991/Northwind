@@ -17,9 +17,9 @@ namespace Persistence.Service
             _productRepository = productRepository;
         }
 
-        public IQueryable<Product> GetAll(bool tracking = true)
+        public  IQueryable<Product> GetAll(bool tracking = true)
         {
-           return _productRepository.GetAll();
+           return  _productRepository.GetAll();
         }
     }
 }
