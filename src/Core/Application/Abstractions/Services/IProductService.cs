@@ -8,6 +8,6 @@ namespace Application.Abstractions.Services
 {
     public interface IProductService
     {
-        IQueryable<Product> GetAll(bool tracking = true);
+        Task<List<Product>> GetAll();
     }
 }

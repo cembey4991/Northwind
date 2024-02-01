@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Abstractions.Services;
 using Application.Repositories;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Service
 {
@@ -17,9 +18,9 @@ namespace Persistence.Service
             _productRepository = productRepository;
         }
 
-        public  IQueryable<Product> GetAll(bool tracking = true)
+        public  async Task<List<Product>> GetAll()
         {
-           return  _productRepository.GetAll();
+           return  await _productRepository.GetAll().AsNoTracking().ToListAsync();
         }
     }
 }

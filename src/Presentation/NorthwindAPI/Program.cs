@@ -25,8 +25,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(
 options=> options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
-
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
 // builder.Services.AddScoped<IProductService, ProductService>();
 // builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
@@ -40,8 +40,8 @@ builder.Services.RegisterAssemblyPublicNonGenericClasses(assembliesToScan)
 
 //builder.Services.AddTransient<GetAllProductQueryHandler>();
 builder.Services.AddMediatR(typeof(GetAllProductQueryRequest), typeof(GetAllProductQueryResponse));
-
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddStackExchangeRedisCache(options =>  options.Configuration = "localhost:1453");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

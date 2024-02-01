@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Application.Features.Queries.GetAllProduct
 {
-     public class GetAllProductQueryRequest : IRequest<CustomResponseDTO<List<Product>>>
+     public class GetAllProductQueryRequest : IRequest<CustomResponseDTO<List<GetAllProductQueryResponse>>>
     {
 
     }
